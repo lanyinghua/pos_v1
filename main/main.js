@@ -57,14 +57,14 @@ var tags = [
 function barCount(inputItems) {
   var items =[];
   var item={};
-  item.barcode=bar;
+  item.barcode=inputItems[i];
   item.count=0.0;
 
   for (var i=0;i<inputItems.length;i++){
-    var bar = tags[i];
+    var bar = inputItems[i];
     if (item.barcode==bar){
       item.count+=1;
-    }else if (item.barcode!=bar){
+    }else {
       var item={};
       item.barcode=bar;
       item.count=1;
@@ -73,8 +73,8 @@ function barCount(inputItems) {
   }
   return items;
 }
-var preOutputItems=barCount(tags)
-// console.log(barCount(tags))
+var preOutputItems=barCount(tags);
+// console.log(barCount(tags));
 
 function split(items) {
   var outputItems=barCount(tags);
@@ -219,7 +219,7 @@ function result(outputItems,summary) {
   }
 
   str+="----------------------\n总计："+summary[0].toFixed(2)+"(元)\n节省："
-    +summary[1].toFixed(2)+"(元)\n **********************`"
+    +summary[1].toFixed(2)+"(元)\n**********************"
 
   return str;
 }
